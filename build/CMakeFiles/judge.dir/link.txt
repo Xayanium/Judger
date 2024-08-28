@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/judge.dir/src/compare/std_check.c.o CMakeFiles/judge.dir/src/global/global.c.o CMakeFiles/judge.dir/src/limit/set_limit.c.o CMakeFiles/judge.dir/src/judge/child.c.o CMakeFiles/judge.dir/src/judge/run.c.o CMakeFiles/judge.dir/src/logger/logger.c.o CMakeFiles/judge.dir/src/cJSON/cJSON.c.o CMakeFiles/judge.dir/src/main.c.o -o ../output/judge 

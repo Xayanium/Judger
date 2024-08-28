@@ -1,0 +1,3 @@
+/home/xa/JudgeHost/build/CMakeFiles/judge.dir
+/home/xa/JudgeHost/build/CMakeFiles/edit_cache.dir
+/home/xa/JudgeHost/build/CMakeFiles/rebuild_cache.dir
