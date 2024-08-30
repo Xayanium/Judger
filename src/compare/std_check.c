@@ -10,13 +10,13 @@
 #include "../global/global.h"
 
 void processFile(char* outputFilename, char* answerFilename) {
-    //处理文件行末空格和文件末尾换行
+    //处理文件行末空格和文件末尾换行(windows是\r\n, linux是\n)
     char* argv = malloc(strlen(outputFilename)+ strlen(answerFilename)+30);
-    sprintf(argv, "sed -i 's/[ \\t]*$//g' %s", outputFilename);
+    sprintf(argv, "sed -i 's/[ \r\n]*$//g' %s", outputFilename);
     system(argv);
     sprintf(argv, "perl -pi -e 'chomp if eof' %s", outputFilename);
     system(argv);
-    sprintf(argv, "sed -i 's/[ \\t]*$//g' %s", answerFilename);
+    sprintf(argv, "sed -i 's/[ \r\n]*$//g' %s", answerFilename);
     system(argv);
     sprintf(argv, "perl -pi -e 'chomp if eof' %s", answerFilename);
     system(argv);
