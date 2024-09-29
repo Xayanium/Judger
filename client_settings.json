@@ -1,0 +1,10 @@
+{
+  "nats_server": "127.0.0.1",
+  "subject": "subject",
+  "stream": "stream",
+  "durable": "durable",
+  "endpoint": "endpoint",
+  "access_key": "access_key",
+  "secret_key": "secret_key",
+  "bucket_name": "bucket_name"
+}

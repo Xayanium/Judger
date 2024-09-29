@@ -1,0 +1,3 @@
+/home/xa/PycharmProjects/Judger/build/CMakeFiles/judge.dir
+/home/xa/PycharmProjects/Judger/build/CMakeFiles/edit_cache.dir
+/home/xa/PycharmProjects/Judger/build/CMakeFiles/rebuild_cache.dir

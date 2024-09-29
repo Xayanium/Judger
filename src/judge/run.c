@@ -20,7 +20,7 @@ void runJudge(struct exeConfig* exeConfig, struct limConfig* limConfig, struct j
     pid_t pid = fork(); //生成父子进程
     if(pid == -1) {
         judgeResult->execResult = FORK_ERROR;
-        makeLog(ERROR, exeConfig->logPath, "fork error");
+//        makeLog(ERROR, exeConfig->logPath, "fork error");
         return;
     }
 
@@ -35,7 +35,7 @@ void runJudge(struct exeConfig* exeConfig, struct limConfig* limConfig, struct j
         wait4(pid, &status, WSTOPPED, &rusage);
         gettimeofday(&end, NULL); // 记录执行结束时刻
 
-        makeLog(INFO, exeConfig->logPath, "finish child process");
+//        makeLog(INFO, exeConfig->logPath, "finish child process");
 
         //将判题结果存入全局变量中, 方便调用
         //秒数存为ms, 方便比较
@@ -54,7 +54,7 @@ void runJudge(struct exeConfig* exeConfig, struct limConfig* limConfig, struct j
                 //如果不是special judge, 直接比较文件
                 judgeResult->execResult = stdCheck(exeConfig->outputPath, exeConfig->answerPath);
             }
-            makeLog(INFO, exeConfig->logPath, "get result success");
+//            makeLog(INFO, exeConfig->logPath, "get result success");
         }
     }
 }

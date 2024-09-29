@@ -7,7 +7,7 @@
 #include <sys/resource.h>
 #include <stdbool.h>
 #include <stdio.h>
-#include "cjson/cJSON.h"
+#include "../cJSON/cJSON.h"
 
 enum RUNNING_CONDITION {
     //用户代码导致的结果
@@ -26,9 +26,10 @@ enum RUNNING_CONDITION {
     SET_LIMIT_ERROR,  //设置限制时出错
     INPUT_PATH_ERROR,  //输入文件找不到
     OUTPUT_PATH_ERROR,  //输出路径错误
+    DUP_ERROR,  //dup2操作失败
     FORK_ERROR,  //创建子进程出错
     RUN_SUCCESS, //子进程正常结束
-    RUN_ERROR, //子进程运行过程
+    RUN_ERROR, //子进程运行出错
     UNKNOWN_ERROR, //未知错误
 };
 
@@ -46,10 +47,11 @@ struct limConfig {
 
 struct exeConfig {
     int id;  //当前处于几号test case
+    char* lan;
     char* inputPath;
     char* outputPath;
     char* errorPath;
-    char* execPath;
+    char* execPath[10];
     char* answerPath;
     FILE* logPath;
     bool isSpj;  //是否使用special judge
@@ -65,9 +67,9 @@ struct judgeResult {
 
 
 
-int getJudgeResult(struct judgeResult* judgeResult, struct limConfig* limConfig, int status);
+int getJudgeResult(const struct judgeResult* judgeResult, const struct limConfig* limConfig, const int status);
 bool initConfig(cJSON* parsed, struct exeConfig* exeConfig, struct limConfig* limConfig);
-void returnResult(int id, struct judgeResult* judgeResult);
+void returnResult(const int id, const struct judgeResult* judgeResult);
 void initGlobal(struct exeConfig* exeConfig, struct limConfig* limConfig, struct judgeResult* judgeResult);
 void parseResult(struct judgeResult* judgeResult);
 #endif //JUDGE_GLOBAL_H

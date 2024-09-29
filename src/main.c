@@ -6,7 +6,7 @@
 #include "global/global.h"
 #include "judge/run.h"
 #include "logger/logger.h"
-#include "cjson/cJSON.h"
+#include "cJSON/cJSON.h"
 
 int main(int argc, char* argv[]) {
     struct exeConfig exeConfig;
@@ -14,7 +14,7 @@ int main(int argc, char* argv[]) {
     struct judgeResult judgeResult;
 
     initGlobal(&exeConfig, &limConfig, &judgeResult);
-    FILE* fp = fopen("/home/xa/JudgeHost/log/log.txt", "a+");
+    FILE* fp = fopen("/home/xa/PycharmProjects/Judger/log/log.txt", "a+");
     exeConfig.logPath = fp;
 
     if(argc < 2) {
@@ -25,12 +25,12 @@ int main(int argc, char* argv[]) {
 
     if(initConfig(judgeJson, &exeConfig, &limConfig)) {
         runJudge(&exeConfig, &limConfig, &judgeResult);
-        makeLog(INFO, exeConfig.logPath, "complete run judge");
+//        makeLog(INFO, exeConfig.logPath, "complete run judge");
         parseResult(&judgeResult);
     }
 
     returnResult(exeConfig.id, &judgeResult);
-    makeLog(INFO, exeConfig.logPath, "complete return result");
+//    makeLog(INFO, exeConfig.logPath, "complete return result");
     cJSON_Delete(judgeJson);
     fclose(fp);
     return 0;
